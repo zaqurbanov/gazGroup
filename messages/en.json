@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "siteName": "Caspian Gaz Group",
+    "tagline": "Industrial and laboratory gases",
+    "description": "Caspian Gaz Group supplies high-purity industrial and laboratory gases, cylinder filling, delivery and technical consulting."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "services": "Services",
+    "projects": "Projects",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "contactUs": "Contact us",
+    "viewAll": "View all",
+    "requestQuote": "Request a quote",
+    "inStock": "In stock",
+    "limited": "Limited",
+    "onRequest": "On request",
+    "formula": "Formula",
+    "purity": "Purity",
+    "applications": "Applications",
+    "category": "Category",
+    "relatedProducts": "Other products",
+    "notFoundTitle": "Page not found",
+    "notFoundText": "The page you are looking for does not exist or has moved.",
+    "backHome": "Back to home",
+    "skipToContent": "Skip to content",
+    "scroll": "Scroll down"
+  },
+  "hero": {
+    "eyebrow": "Industrial and laboratory gases",
+    "title": "The invisible foundation of precision",
+    "subtitle": "High-purity technical and specialty gases, cylinder filling and safe delivery. Every step from molecule to end user stays under control.",
+    "ctaPrimary": "Explore products",
+    "ctaSecondary": "Contact us"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "Reliability and precision in gas supply",
+    "text1": "Caspian Gaz Group supplies technical and specialty gases to industrial plants and laboratories. Purity grade, safety and on-time delivery come first in every order.",
+    "text2": "Our goal is for each customer to receive the right gas, at the right purity, in the right cylinder, at the right time.",
+    "missionTitle": "Mission",
+    "missionText": "To support our customers' production and analysis with uninterrupted, safe and precise gas supply.",
+    "visionTitle": "Vision",
+    "visionText": "To become one of the most trusted partners in industrial and laboratory gases in the region.",
+    "stats": {
+      "years": "Years of experience",
+      "clients": "Clients",
+      "products": "Products",
+      "projects": "Projects"
+    }
+  },
+  "products": {
+    "eyebrow": "Products",
+    "title": "Industrial, specialty and liquid gases",
+    "subtitle": "Choose the gas and purity grade that fits your process. Custom mixtures are prepared to order.",
+    "pageTitle": "Gas products",
+    "pageDescription": "Oxygen, nitrogen, argon, carbon dioxide, helium and custom mixtures: gas products for industry and laboratories.",
+    "empty": "Products will be added soon."
+  },
+  "why": {
+    "eyebrow": "Why us",
+    "title": "What our supply is built on",
+    "items": [
+      { "title": "Purity grades", "text": "Gas in the purity grade that suits each application." },
+      { "title": "Custom mixtures", "text": "Gas mixtures with a composition matched to your process." },
+      { "title": "Safe delivery", "text": "Cylinders are transported in line with safety rules." },
+      { "title": "Wide range", "text": "Technical, specialty and liquid gases, plus equipment." },
+      { "title": "Personal approach", "text": "A supply plan fitted to each customer's volume and schedule." },
+      { "title": "Technical support", "text": "Professional advice on gas selection and use." }
+    ]
+  },
+  "certs": {
+    "eyebrow": "Quality",
+    "title": "Certificates and documents",
+    "subtitle": "Supply documents and conformity certificates."
+  },
+  "stock": {
+    "eyebrow": "Stock",
+    "title": "Products in stock",
+    "subtitle": "Current stock status. Contact us for exact availability.",
+    "order": "Order"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Full service from gas to delivery",
+    "subtitle": "Sales, filling, delivery and technical advice in one place.",
+    "pageTitle": "Services",
+    "pageDescription": "Gas sales, cylinder filling, delivery, technical consulting and logistics services.",
+    "empty": "Services will be added soon."
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "Projects we have delivered",
+    "pageTitle": "Projects",
+    "pageDescription": "Gas supply projects delivered by Caspian Gaz Group.",
+    "client": "Client",
+    "year": "Year",
+    "empty": "Projects will be added soon."
+  },
+  "clients": {
+    "title": "Trusted by"
+  },
+  "partners": {
+    "title": "Our partners"
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Frequently asked questions",
+    "pageDescription": "Answers about gas selection, purity grades, delivery and ordering.",
+    "empty": "Questions will be added soon."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Write to us to order or ask",
+    "subtitle": "Send your request and we will get back to you as soon as possible.",
+    "pageDescription": "Contact Caspian Gaz Group: address, phone, email and request form.",
+    "name": "Full name",
+    "company": "Company",
+    "phone": "Phone",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Your request has been received. We will contact you shortly.",
+    "error": "We could not send it. Please check the fields and try again.",
+    "tooMany": "Too many attempts. Please try again in a moment.",
+    "address": "Address",
+    "hours": "Working hours",
+    "whatsapp": "Chat on WhatsApp"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "navigation": "Navigation",
+    "contacts": "Contact"
+  }
+}

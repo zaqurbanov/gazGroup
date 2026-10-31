@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "siteName": "Caspian Gaz Group",
+    "tagline": "Sənaye və laboratoriya qazları",
+    "description": "Caspian Gaz Group: sənaye və laboratoriya üçün yüksək təmizlikli qazlar, balonların doldurulması, çatdırılma və texniki məsləhət."
+  },
+  "nav": {
+    "home": "Ana səhifə",
+    "about": "Haqqımızda",
+    "products": "Məhsullar",
+    "services": "Xidmətlər",
+    "projects": "Layihələr",
+    "faq": "Suallar",
+    "contact": "Əlaqə",
+    "menu": "Menyu",
+    "close": "Bağla"
+  },
+  "common": {
+    "learnMore": "Ətraflı",
+    "contactUs": "Bizimlə əlaqə",
+    "viewAll": "Hamısına bax",
+    "requestQuote": "Qiymət sorğusu",
+    "inStock": "Stokda",
+    "limited": "Məhdud",
+    "onRequest": "Sifarişlə",
+    "formula": "Formula",
+    "purity": "Təmizlik",
+    "applications": "Tətbiq sahələri",
+    "category": "Kateqoriya",
+    "relatedProducts": "Digər məhsullar",
+    "notFoundTitle": "Səhifə tapılmadı",
+    "notFoundText": "Axtardığınız səhifə mövcud deyil və ya köçürülüb.",
+    "backHome": "Ana səhifəyə qayıt",
+    "skipToContent": "Məzmuna keç",
+    "scroll": "Aşağı sürüşdür"
+  },
+  "hero": {
+    "eyebrow": "Sənaye və laboratoriya qazları",
+    "title": "Dəqiqliyin görünməyən əsası",
+    "subtitle": "Yüksək təmizlikli texniki və xüsusi qazlar, balonların doldurulması və təhlükəsiz çatdırılma. Molekuldan istehlakçıya qədər bütün mərhələ nəzarət altındadır.",
+    "ctaPrimary": "Məhsullara bax",
+    "ctaSecondary": "Bizimlə əlaqə"
+  },
+  "about": {
+    "eyebrow": "Haqqımızda",
+    "title": "Qaz təchizatında etibar və dəqiqlik",
+    "text1": "Caspian Gaz Group sənaye müəssisələri və laboratoriyalar üçün texniki və xüsusi qazlar təchiz edir. Hər sifarişdə təmizlik dərəcəsi, təhlükəsizlik və vaxtında çatdırılma əsas meyardır.",
+    "text2": "Məqsədimiz müştərinin proses üçün lazım olan qazı düzgün təmizlik dərəcəsində, düzgün balonda və düzgün vaxtda əldə etməsidir.",
+    "missionTitle": "Missiya",
+    "missionText": "Müştərilərin istehsal və analiz proseslərini fasiləsiz, təhlükəsiz və dəqiq qaz təchizatı ilə dəstəkləmək.",
+    "visionTitle": "Vizyon",
+    "visionText": "Regionda sənaye və laboratoriya qazları sahəsində ən etibarlı tərəfdaşlardan biri olmaq.",
+    "stats": {
+      "years": "İllik təcrübə",
+      "clients": "Müştəri",
+      "products": "Məhsul çeşidi",
+      "projects": "Layihə"
+    }
+  },
+  "products": {
+    "eyebrow": "Məhsullar",
+    "title": "Sənaye, xüsusi və maye qazlar",
+    "subtitle": "Prosesinizə uyğun qazı və təmizlik dərəcəsini seçin. Xüsusi qarışıqlar sifarişlə hazırlanır.",
+    "pageTitle": "Qaz məhsulları",
+    "pageDescription": "Oksigen, azot, arqon, karbon qazı, helium və xüsusi qarışıqlar: sənaye və laboratoriya üçün qaz məhsulları.",
+    "empty": "Məhsullar tezliklə əlavə olunacaq."
+  },
+  "why": {
+    "eyebrow": "Niyə biz",
+    "title": "Qaz təchizatında nəyə əsaslanırıq",
+    "items": [
+      { "title": "Təmizlik dərəcəsi", "text": "Hər tətbiq üçün uyğun təmizlik dərəcəsində qaz təklif edirik." },
+      { "title": "Xüsusi qarışıqlar", "text": "Proses tələbinə uyğun fərdi tərkibli qaz qarışıqları." },
+      { "title": "Təhlükəsiz çatdırılma", "text": "Balonların daşınması təhlükəsizlik qaydalarına uyğun aparılır." },
+      { "title": "Geniş çeşid", "text": "Texniki, xüsusi və maye qazlar, həmçinin avadanlıq." },
+      { "title": "Fərdi yanaşma", "text": "Hər müştərinin həcm və qrafikinə uyğun təchizat planı." },
+      { "title": "Texniki dəstək", "text": "Qaz seçimi və istifadə üzrə peşəkar məsləhət." }
+    ]
+  },
+  "certs": {
+    "eyebrow": "Keyfiyyət",
+    "title": "Sertifikatlar və sənədlər",
+    "subtitle": "Təchizatla bağlı sənədlər və uyğunluq sertifikatları."
+  },
+  "stock": {
+    "eyebrow": "Stok",
+    "title": "Stokda olan məhsullar",
+    "subtitle": "Cari stok vəziyyəti. Dəqiq məlumat üçün bizimlə əlaqə saxlayın.",
+    "order": "Sifariş et"
+  },
+  "services": {
+    "eyebrow": "Xidmətlər",
+    "title": "Qazdan çatdırılmaya qədər tam xidmət",
+    "subtitle": "Satış, doldurma, çatdırılma və texniki məsləhət bir ünvanda.",
+    "pageTitle": "Xidmətlər",
+    "pageDescription": "Qaz satışı, balon doldurulması, çatdırılma, texniki məsləhət və logistika xidmətləri.",
+    "empty": "Xidmətlər tezliklə əlavə olunacaq."
+  },
+  "projects": {
+    "eyebrow": "Layihələr",
+    "title": "Həyata keçirdiyimiz layihələr",
+    "pageTitle": "Layihələr",
+    "pageDescription": "Caspian Gaz Group tərəfindən həyata keçirilən qaz təchizatı layihələri.",
+    "client": "Müştəri",
+    "year": "İl",
+    "empty": "Layihələr tezliklə əlavə olunacaq."
+  },
+  "clients": {
+    "title": "Bizə güvənənlər"
+  },
+  "partners": {
+    "title": "Tərəfdaşlarımız"
+  },
+  "faq": {
+    "eyebrow": "Suallar",
+    "title": "Tez-tez verilən suallar",
+    "pageDescription": "Qazların seçimi, təmizlik dərəcəsi, çatdırılma və sifariş haqqında cavablar.",
+    "empty": "Suallar tezliklə əlavə olunacaq."
+  },
+  "contact": {
+    "eyebrow": "Əlaqə",
+    "title": "Sifariş və ya sual üçün yazın",
+    "subtitle": "Müraciətinizi göndərin, ən qısa zamanda geri dönək.",
+    "pageDescription": "Caspian Gaz Group ilə əlaqə: ünvan, telefon, e-poçt və sorğu forması.",
+    "name": "Ad, soyad",
+    "company": "Şirkət",
+    "phone": "Telefon",
+    "email": "E-poçt",
+    "message": "Mesaj",
+    "send": "Göndər",
+    "sending": "Göndərilir...",
+    "success": "Müraciətiniz qəbul edildi. Tezliklə sizinlə əlaqə saxlayacağıq.",
+    "error": "Göndərmək mümkün olmadı. Məlumatları yoxlayıb yenidən cəhd edin.",
+    "tooMany": "Çox sayda cəhd. Bir az sonra yenidən cəhd edin.",
+    "address": "Ünvan",
+    "hours": "İş saatları",
+    "whatsapp": "WhatsApp-da yaz"
+  },
+  "footer": {
+    "rights": "Bütün hüquqlar qorunur.",
+    "navigation": "Naviqasiya",
+    "contacts": "Əlaqə"
+  }
+}

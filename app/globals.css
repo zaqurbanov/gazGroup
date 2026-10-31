@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/* Palette 2 "Analitik Dəqiqlik və Eko": #0F3D5E / #10B981 / #64748B / #FFFFFF */
+:root {
+  --deep: #0f3d5e;
+  --emerald: #10b981;
+  --steel: #64748b;
+  --white: #ffffff;
+  --ink: color-mix(in oklab, #0f3d5e 55%, black);
+  --mist: color-mix(in oklab, #64748b 9%, white);
+  --line: color-mix(in oklab, #64748b 25%, white);
+}
+
+@theme inline {
+  --color-deep: var(--deep);
+  --color-emerald: var(--emerald);
+  --color-steel: var(--steel);
+  --color-ink: var(--ink);
+  --color-mist: var(--mist);
+  --color-line: var(--line);
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-display: var(--font-unbounded), var(--font-manrope), system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--white);
+    color: var(--deep);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--emerald);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--emerald);
+    color: var(--deep);
+  }
+}
+
+@layer components {
+  .container-x {
+    width: min(100% - 2.5rem, 76rem);
+    margin-inline: auto;
+  }
+  .section {
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+    position: relative;
+  }
+  /* Dark sections stay transparent so the fixed 3D scene shows through. */
+  .section-dark {
+    color: var(--white);
+  }
+  .section-dark-solid {
+    background: var(--ink);
+    color: var(--white);
+  }
+  .section-light {
+    background: var(--white);
+    color: var(--deep);
+    position: relative;
+    z-index: 2;
+  }
+  .section-mist {
+    background: var(--mist);
+    color: var(--deep);
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 2px;
+    background: var(--emerald);
+  }
+
+  .h-display {
+    font-size: clamp(2.1rem, 5.2vw, 4.2rem);
+    line-height: 1.08;
+    font-weight: 600;
+  }
+  .h-section {
+    font-size: clamp(1.7rem, 3.6vw, 2.8rem);
+    line-height: 1.15;
+    font-weight: 600;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition:
+      transform 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn-primary {
+    background: var(--emerald);
+    color: var(--deep);
+    box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--emerald) 70%, transparent);
+  }
+  .btn-primary:hover {
+    background: color-mix(in oklab, var(--emerald) 85%, white);
+  }
+  .btn-ghost {
+    border: 1.5px solid currentColor;
+  }
+  .btn-ghost:hover {
+    background: color-mix(in oklab, currentColor 12%, transparent);
+  }
+
+  .glass {
+    background: color-mix(in oklab, var(--ink) 58%, transparent);
+    border: 1px solid color-mix(in oklab, white 18%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 1.25rem;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--emerald);
+    box-shadow: 0 24px 50px -28px color-mix(in oklab, var(--deep) 55%, transparent);
+  }
+
+  .prose-gas p + p {
+    margin-top: 1rem;
+  }
+  .prose-gas {
+    line-height: 1.75;
+  }
+}
+
+/* Scroll reveal driven by CSS only. Without support (or with reduced motion) content is simply visible. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(2.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 3rem;
+  animation: marquee 38s linear infinite;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: auto;
+  }
+}
