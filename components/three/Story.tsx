@@ -127,7 +127,8 @@ function Skyline({ seed, z, minH, maxH, color, alpha, parallax }: {
 
   return (
     <group ref={group} position={[0, GROUND, z]}>
-      {[-2, -1, 0, 1, 2].flatMap((k) =>
+      {/* Only [-14, 14] plus the wrap offset (< PERIOD) is ever on screen, so three copies are enough. */}
+      {[-1, 0, 1].flatMap((k) =>
         boxes.map((b, i) => (
           <mesh key={`${k}-${i}`} position={[k * PERIOD + b.x - PERIOD / 2, b.h / 2, 0]} geometry={geometries[i]} material={material} />
         )),
@@ -206,8 +207,8 @@ export function StoryStage() {
           </mesh>
         ))}
         <group ref={dashes}>
-          {Array.from({ length: 52 }, (_, i) => (
-            <mesh key={i} position={[(i - 26) * DASH, GROUND + 0.014, -0.05]}>
+          {Array.from({ length: 22 }, (_, i) => (
+            <mesh key={i} position={[(i - 11) * DASH, GROUND + 0.014, -0.05]}>
               <boxGeometry args={[0.8, 0.02, 0.1]} />
               <meshBasicMaterial color="#ffffff" transparent opacity={0.35} />
             </mesh>

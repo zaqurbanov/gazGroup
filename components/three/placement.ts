@@ -43,5 +43,5 @@ export function placementFor(
   // A tall cylinder must also fit the screen height.
   if (mode === "tank") s = Math.min(s, (halfH * 2 * (phone ? 0.42 : 0.82)) / 4.8);
 
-  return { x, y, z: cfg.z, s, halfW, halfH, phone, U: Math.min(1, halfW / 3.4) };
+  return { x, y, z: cfg.z, s, halfW, halfH, phone, U: Math.min(1, halfW / 4.0) };
 }

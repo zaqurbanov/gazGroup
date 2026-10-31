@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "tsx --env-file=.env.local scripts/seed.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "seed:products": "tsx --env-file=.env.local scripts/sync-products.ts"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",

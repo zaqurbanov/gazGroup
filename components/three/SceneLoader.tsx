@@ -17,7 +17,13 @@ function canRender3D(): boolean {
   }
 }
 
-/** The hero is a video, so WebGL (and the three.js bundle) only loads once the visitor starts scrolling. */
+/**
+ * The hero is a video, so WebGL stays out of the critical path. The scene mounts (hidden, paused) a few
+ * seconds after load while the visitor reads the hero, or immediately on the first scroll. That moves the
+ * three.js parse, context creation and shader compilation out of the first scroll, where it froze the page.
+ */
+const WARM_UP_MS = 4000;
+
 export function SceneLoader() {
   const [ready, setReady] = useState(false);
 
@@ -28,8 +34,13 @@ export function SceneLoader() {
       start();
       return;
     }
+    const idle = (window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 0))).bind(window);
+    const timer = window.setTimeout(() => idle(start), WARM_UP_MS);
     window.addEventListener("scroll", start, { once: true, passive: true });
-    return () => window.removeEventListener("scroll", start);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("scroll", start);
+    };
   }, []);
 
   return ready ? <Scene /> : null;

@@ -48,6 +48,8 @@ const bySlug: Record<string, GasKey> = {
   helium: "He",
   hydrogen: "H2",
   "liquid-nitrogen": "N2",
+  "liquid-helium": "He",
+  "liquid-oxygen": "O2",
 };
 
 export const gasForSlug = (slug: string): GasKey => bySlug[slug] ?? "O2";

@@ -353,12 +353,26 @@ export default function Scene() {
       gl={{ antialias: !narrow, alpha: true, powerPreference: "high-performance" }}
       // Dimmed on phones so text stays readable where the scene sits behind it.
       style={{ pointerEvents: "none", opacity: narrow ? 0.55 : 1 }}
-      onCreated={({ gl, scene }) => {
+      onCreated={({ gl, scene, camera }) => {
         // Procedural studio environment: gives metal and clearcoat real reflections without downloading an HDR.
         const pmrem = new THREE.PMREMGenerator(gl);
         scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
         scene.environmentIntensity = 0.85;
         pmrem.dispose();
+
+        // Compile all shaders up front. Objects that are hidden until their section (the truck) are skipped by the
+        // renderer, so they are shown for the moment of collection and hidden again, which avoids a stall later.
+        window.setTimeout(() => {
+          const hidden: THREE.Object3D[] = [];
+          scene.traverse((o) => {
+            if (!o.visible) {
+              hidden.push(o);
+              o.visible = true;
+            }
+          });
+          void gl.compileAsync(scene, camera);
+          hidden.forEach((o) => (o.visible = false));
+        }, 300);
       }}
     >
       <ambientLight intensity={0.25} />
