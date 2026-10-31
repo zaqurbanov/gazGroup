@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/projects/[
     locale,
     path: `/projects/${slug}`,
     title: pick(project.seoTitle, locale) || pick(project.title, locale),
-    description: pick(project.seoDescription, locale) || truncate(pick(project.summary, locale) || pick(project.description, locale)),
+    description: pick(project.seoDescription, locale) || truncate(`${pick(project.summary, locale)} ${pick(project.description, locale)}`),
     image: project.image ? mediaUrl(project.image) : undefined,
     type: "article",
   });

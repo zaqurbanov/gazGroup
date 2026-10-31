@@ -81,7 +81,7 @@ export function Header({ locale, logo, labels }: Props) {
                   lang={l}
                   aria-current={l === locale ? "true" : undefined}
                   className={`rounded-full px-2.5 py-1.5 transition-colors ${
-                    l === locale ? "bg-emerald text-deep" : "text-white/80 hover:text-white"
+                    l === locale ? "bg-emerald text-ink" : "text-white/80 hover:text-white"
                   }`}
                 >
                   {localeLabels[l]}

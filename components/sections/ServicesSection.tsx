@@ -7,14 +7,14 @@ import { pick, type Locale } from "@/lib/i18n";
 export function ServicesSection({ locale, dict, services }: { locale: Locale; dict: Dictionary; services: ServiceDTO[] }) {
   if (services.length === 0) return null;
   return (
-    <section data-scene="services" className="section section-mist">
+    <section data-scene="services" className="section section-dark relative z-[1]">
       <div className="container-x space-y-12">
         <SectionHeading eyebrow={dict.services.eyebrow} title={dict.services.title} subtitle={dict.services.subtitle} />
-        <ul className="grid gap-5 md:grid-cols-2">
+        <ul className="grid max-w-3xl gap-5">
           {services.map((s, i) => (
             <li key={s._id} className="reveal">
               <Link href={`/${locale}/services/${s.slug}`} className="card group flex h-full gap-6 p-7">
-                <span className="font-display text-3xl font-semibold text-emerald" aria-hidden="true">
+                <span className="w-12 shrink-0 font-display text-3xl font-semibold text-emerald" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="space-y-2">

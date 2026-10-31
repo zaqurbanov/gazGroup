@@ -69,12 +69,30 @@
     "eyebrow": "Niyə biz",
     "title": "Qaz təchizatında nəyə əsaslanırıq",
     "items": [
-      { "title": "Təmizlik dərəcəsi", "text": "Hər tətbiq üçün uyğun təmizlik dərəcəsində qaz təklif edirik." },
-      { "title": "Xüsusi qarışıqlar", "text": "Proses tələbinə uyğun fərdi tərkibli qaz qarışıqları." },
-      { "title": "Təhlükəsiz çatdırılma", "text": "Balonların daşınması təhlükəsizlik qaydalarına uyğun aparılır." },
-      { "title": "Geniş çeşid", "text": "Texniki, xüsusi və maye qazlar, həmçinin avadanlıq." },
-      { "title": "Fərdi yanaşma", "text": "Hər müştərinin həcm və qrafikinə uyğun təchizat planı." },
-      { "title": "Texniki dəstək", "text": "Qaz seçimi və istifadə üzrə peşəkar məsləhət." }
+      {
+        "title": "Təmizlik dərəcəsi",
+        "text": "Hər tətbiq üçün uyğun təmizlik dərəcəsində qaz təklif edirik."
+      },
+      {
+        "title": "Xüsusi qarışıqlar",
+        "text": "Proses tələbinə uyğun fərdi tərkibli qaz qarışıqları."
+      },
+      {
+        "title": "Təhlükəsiz çatdırılma",
+        "text": "Balonların daşınması təhlükəsizlik qaydalarına uyğun aparılır."
+      },
+      {
+        "title": "Geniş çeşid",
+        "text": "Texniki, xüsusi və maye qazlar, həmçinin avadanlıq."
+      },
+      {
+        "title": "Fərdi yanaşma",
+        "text": "Hər müştərinin həcm və qrafikinə uyğun təchizat planı."
+      },
+      {
+        "title": "Texniki dəstək",
+        "text": "Qaz seçimi və istifadə üzrə peşəkar məsləhət."
+      }
     ]
   },
   "certs": {
@@ -140,5 +158,23 @@
     "rights": "Bütün hüquqlar qorunur.",
     "navigation": "Naviqasiya",
     "contacts": "Əlaqə"
+  },
+  "story": {
+    "eyebrow": "Çatdırılma",
+    "title": "Balondan sizin ünvanınıza",
+    "steps": [
+      {
+        "title": "Doldurma və yoxlama",
+        "text": "Balon tələb olunan qazla doldurulur və buraxılışdan əvvəl yoxlanılır."
+      },
+      {
+        "title": "Yükləmə",
+        "text": "Balon nəqliyyata təhlükəsiz şəkildə yerləşdirilir və bərkidilir."
+      },
+      {
+        "title": "Çatdırılma",
+        "text": "Sifariş razılaşdırılmış ünvana yola düşür."
+      }
+    ]
   }
 }

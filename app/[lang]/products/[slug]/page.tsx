@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/products/[
     locale,
     path: `/products/${slug}`,
     title: pick(product.seoTitle, locale) || name,
-    description: pick(product.seoDescription, locale) || truncate(pick(product.summary, locale) || pick(product.description, locale)),
+    description: pick(product.seoDescription, locale) || truncate(`${pick(product.summary, locale)} ${pick(product.description, locale)}`),
     image: product.image ? mediaUrl(product.image) : undefined,
   });
 }
@@ -127,7 +127,7 @@ export default async function ProductPage({ params }: PageProps<"/[lang]/product
               {related.map((p) => (
                 <li key={p._id}>
                   <Link href={`/${locale}/products/${p.slug}`} className="card block space-y-2 p-6">
-                    <span className="font-display text-2xl font-semibold text-emerald">{p.formula}</span>
+                    <span className="font-display text-2xl font-semibold text-emerald-ink">{p.formula}</span>
                     <span className="block font-display font-semibold">{pick(p.name, locale)}</span>
                   </Link>
                 </li>

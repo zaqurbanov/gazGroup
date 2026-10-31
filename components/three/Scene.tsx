@@ -5,6 +5,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
 import { molecules, type GasKey } from "./gases";
+import { placementFor } from "./placement";
+import { StoryStage } from "./Story";
+import { dampAngle, storyAt } from "./timeline";
 import { TankModel } from "./Tank";
 import { mulberry32, sceneStore, type Mode } from "./store";
 
@@ -13,18 +16,14 @@ const WHITE = new THREE.Color("#ffffff");
 const STEEL = new THREE.Color("#64748b");
 
 const sectionMode: Record<string, Mode> = {
-  hero: "molecule",
   about: "molecule",
   products: "molecule",
+  why: "tank",
   stock: "tank",
+  delivery: "tank",
+  services: "cloud",
+  references: "cloud",
   contact: "tank",
-};
-
-/** Where the group sits per mode on a wide screen; narrow screens move it behind the text. */
-const layout: Record<Mode, { x: number; y: number; z: number; s: number }> = {
-  molecule: { x: 3.1, y: 0, z: 0, s: 1.15 },
-  tank: { x: 3.2, y: -0.15, z: 0, s: 0.95 },
-  cloud: { x: 0, y: 0, z: -2, s: 1 },
 };
 
 function Particles({ count, gas }: { count: number; gas: GasKey }) {
@@ -211,34 +210,32 @@ function World({ count, gas }: { count: number; gas: GasKey }) {
 
   useFrame((state, delta) => {
     const s = sceneStore;
-    const cfg = layout[s.mode];
     const g = group.current;
     if (!g) return;
 
-    // Placement follows the live viewport. World units visible at z = 0 depend on the camera and aspect ratio.
-    const camera = state.camera as THREE.PerspectiveCamera;
-    const halfH = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z;
-    const halfW = halfH * (state.size.width / state.size.height);
-    const phone = state.size.width < 768;
-    // Rough half-width of what is drawn, used to keep it inside the screen.
-    const extent = s.mode === "molecule" ? 2.1 : s.mode === "tank" ? 0.75 : 0;
+    const pl = placementFor(s.mode, state.camera as THREE.PerspectiveCamera, state.size);
 
-    const targetX = phone ? halfW * 0.4 : Math.min(cfg.x, halfW * 0.62);
-    const targetY = phone ? halfH * 0.6 : cfg.y;
-    let targetS = cfg.s * (phone ? 0.5 : 1);
-    if (extent > 0) targetS = Math.min(targetS, Math.max(0.25, (halfW - Math.abs(targetX) - 0.2) / extent));
-    // A tall cylinder must also fit the screen height.
-    if (s.mode === "tank") targetS = Math.min(targetS, (halfH * 2 * (phone ? 0.42 : 0.82)) / 4.8);
+    if (s.story >= 0 && s.mode === "tank") {
+      // Delivery story: scroll drives the pose. A short damping keeps it smooth without lagging behind.
+      const f = storyAt(s.story, pl.U, { x: pl.x, y: pl.y, s: pl.s });
+      const k = 1 - Math.exp(-delta * 14);
+      g.position.x += (f.tank.x - g.position.x) * k;
+      g.position.y += (f.tank.y - g.position.y) * k;
+      g.position.z += (f.tank.z - g.position.z) * k;
+      g.scale.setScalar(g.scale.x + (f.tank.s - g.scale.x) * k);
+      g.rotation.y = dampAngle(g.rotation.y, f.tank.ry, k);
+      g.rotation.x = THREE.MathUtils.damp(g.rotation.x, 0, 6, delta);
+      g.rotation.z = THREE.MathUtils.damp(g.rotation.z, 0, 6, delta);
+    } else {
+      g.position.x = THREE.MathUtils.damp(g.position.x, pl.x, 2.4, delta);
+      g.position.y = THREE.MathUtils.damp(g.position.y, pl.y, 2.4, delta);
+      g.position.z = THREE.MathUtils.damp(g.position.z, pl.z, 2.4, delta);
+      g.scale.setScalar(THREE.MathUtils.damp(g.scale.x, pl.s, 2.4, delta));
 
-    g.position.x = THREE.MathUtils.damp(g.position.x, targetX, 2.4, delta);
-    g.position.y = THREE.MathUtils.damp(g.position.y, targetY, 2.4, delta);
-    g.position.z = THREE.MathUtils.damp(g.position.z, cfg.z, 2.4, delta);
-    const sc = THREE.MathUtils.damp(g.scale.x, targetS, 2.4, delta);
-    g.scale.setScalar(sc);
-
-    g.rotation.y += delta * (s.mode === "tank" ? 0.35 : 0.18);
-    g.rotation.x = THREE.MathUtils.damp(g.rotation.x, s.py * 0.25, 3, delta);
-    g.rotation.z = THREE.MathUtils.damp(g.rotation.z, -s.px * 0.12, 3, delta);
+      g.rotation.y += delta * (s.mode === "tank" ? 0.35 : 0.18);
+      g.rotation.x = THREE.MathUtils.damp(g.rotation.x, s.py * 0.25, 3, delta);
+      g.rotation.z = THREE.MathUtils.damp(g.rotation.z, -s.px * 0.12, 3, delta);
+    }
 
     pop.current = Math.min(1, pop.current + delta * 2.2);
     const eased = 1 - Math.pow(1 - pop.current, 3);
@@ -258,6 +255,8 @@ function World({ count, gas }: { count: number; gas: GasKey }) {
   });
 
   return (
+    <>
+    <StoryStage />
     <group ref={group}>
       <group ref={molecule}>
         <MoleculeModel gas={gas} />
@@ -268,6 +267,7 @@ function World({ count, gas }: { count: number; gas: GasKey }) {
       </group>
       <Particles count={count} gas={gas} />
     </group>
+    </>
   );
 }
 
@@ -281,9 +281,24 @@ export default function Scene() {
     sceneStore.narrow = narrow;
     let currentSection = "hero";
     let visible = !document.hidden;
+    const story = document.querySelector<HTMLElement>("[data-scene=delivery]");
+    const updateStory = () => {
+      if (!story || currentSection !== "delivery") {
+        sceneStore.story = -1;
+        return;
+      }
+      const r = story.getBoundingClientRect();
+      const range = r.height - window.innerHeight;
+      const p = range > 0 ? Math.min(1, Math.max(0, -r.top / range)) : 0;
+      sceneStore.story = p;
+      // CSS highlights the active caption through this attribute, so React never re-renders on scroll.
+      const step = p < 0.34 ? "1" : p < 0.62 ? "2" : "3";
+      if (story.dataset.step !== step) story.dataset.step = step;
+    };
     const apply = () => {
       const mode = sectionMode[currentSection] ?? "cloud";
       sceneStore.mode = mode;
+      updateStory();
       setActive(visible && currentSection in sectionMode);
     };
 
@@ -313,11 +328,16 @@ export default function Scene() {
       apply();
     };
 
+    document.documentElement.dataset.scene3d = "on";
+    window.addEventListener("scroll", updateStory, { passive: true });
     window.addEventListener("pointermove", onMove, { passive: true });
     document.addEventListener("pointerover", onOver);
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       observer.disconnect();
+      delete document.documentElement.dataset.scene3d;
+      sceneStore.story = -1;
+      window.removeEventListener("scroll", updateStory);
       window.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerover", onOver);
       document.removeEventListener("visibilitychange", onVisibility);

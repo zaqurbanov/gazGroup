@@ -1,11 +1,19 @@
 import Link from "next/link";
+import { HeroVideo } from "@/components/ui/HeroVideo";
 import type { Dictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
 
 export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
-    <section data-scene="hero" className="section-dark relative z-[1] flex min-h-dvh items-center pb-20 pt-32">
-      <div className="container-x">
+    <section data-scene="hero" className="section-dark relative z-[1] flex min-h-dvh items-center overflow-hidden bg-ink pb-20 pt-32">
+      <HeroVideo />
+      {/* Keeps text readable over the footage and melts its lower edge into the next section. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-ink/60 md:bg-transparent md:bg-gradient-to-r md:from-ink md:via-ink/70 md:to-transparent"
+      />
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+      <div className="container-x relative">
         <div className="max-w-2xl space-y-8">
           <h1 className="space-y-6">
             <span className="eyebrow block">{dict.hero.eyebrow}</span>

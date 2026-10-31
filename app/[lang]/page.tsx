@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { About } from "@/components/sections/About";
+import { DeliveryStory } from "@/components/sections/DeliveryStory";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Hero } from "@/components/sections/Hero";
 import { ProductsSection } from "@/components/sections/ProductsSection";
@@ -55,8 +56,9 @@ export default async function HomePage() {
         <Hero locale={locale} dict={dict} />
         <About dict={dict} settings={settings} />
         <ProductsSection locale={locale} dict={dict} products={products} />
-        <WhySection locale={locale} dict={dict} certificates={certificates} />
+        <WhySection locale={locale} dict={dict} certificates={certificates} scene />
         <StockSection locale={locale} dict={dict} products={products} />
+        <DeliveryStory dict={dict} />
         <ServicesSection locale={locale} dict={dict} services={services} />
         <ReferencesSection
           locale={locale}

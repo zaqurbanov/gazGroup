@@ -24,7 +24,8 @@ type PageMeta = {
 };
 
 export function pageMetadata({ locale, path, title, description, image, type = "website" }: PageMeta): Metadata {
-  const images = image ? [{ url: image }] : undefined;
+  const shareImage = image ?? "/og.jpg";
+  const images = [{ url: shareImage }];
   return {
     title,
     description,
@@ -38,7 +39,7 @@ export function pageMetadata({ locale, path, title, description, image, type = "
       alternateLocale: locales.filter((l) => l !== locale).map((l) => ogLocales[l]),
       images,
     },
-    twitter: { card: "summary_large_image", title, description, images: image ? [image] : undefined },
+    twitter: { card: "summary_large_image", title, description, images: [shareImage] },
   };
 }
 

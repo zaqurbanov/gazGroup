@@ -13,7 +13,7 @@ const NECK_Y = 1.72;
 const v = (x: number, y: number) => new THREE.Vector2(x, y);
 
 /** Flat dished base, rounded corner, straight wall. */
-function bodyProfile() {
+export function bodyProfile() {
   const corner = 0.14;
   const pts = [v(0, BOTTOM), v(R - corner, BOTTOM)];
   for (let i = 1; i <= 8; i++) {
@@ -25,7 +25,7 @@ function bodyProfile() {
 }
 
 /** Elliptical dome that narrows into the neck, then a short neck. */
-function shoulderProfile() {
+export function shoulderProfile() {
   const pts: THREE.Vector2[] = [];
   for (let i = 0; i <= 18; i++) {
     const a = (i / 18) * (Math.PI / 2);

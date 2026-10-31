@@ -5,13 +5,18 @@ export type Mode = "molecule" | "tank" | "cloud";
  * scroll position, pointer and fill level change continuously and must not trigger re-renders.
  */
 export const sceneStore = {
-  mode: "molecule" as Mode,
+  mode: "cloud" as Mode,
   narrow: false,
   px: 0,
   py: 0,
   fill: 0.12,
   /** 0 while particles ease toward targets, 1 once they follow the tank stream directly. */
   flow: 0,
+  /** Scroll progress through the delivery story (0..1), or -1 when the story is not on screen. */
+  story: -1,
+  /** Written by the delivery stage each frame so scenery layers can follow the tracking camera. */
+  camX: 0,
+  fade: 0,
 };
 
 /** Small seeded PRNG so particle layouts are deterministic (and pure during render). */

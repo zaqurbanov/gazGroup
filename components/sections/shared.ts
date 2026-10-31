@@ -5,7 +5,7 @@ export const statusLabel = (dict: Dictionary, status: StockStatus) =>
   status === "in_stock" ? dict.common.inStock : status === "limited" ? dict.common.limited : dict.common.onRequest;
 
 export const statusTone: Record<StockStatus, string> = {
-  in_stock: "bg-emerald text-deep",
+  in_stock: "bg-emerald text-ink",
   limited: "bg-white text-deep",
   on_request: "border border-white/40 text-white",
 };

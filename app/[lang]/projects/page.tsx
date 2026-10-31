@@ -8,13 +8,17 @@ import { pick } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [locale, dict] = await Promise.all([getLocale(), getDictionary()]);
-  return pageMetadata({
-    locale,
-    path: "/projects",
-    title: dict.projects.pageTitle,
-    description: dict.projects.pageDescription,
-  });
+  const [locale, dict, projects] = await Promise.all([getLocale(), getDictionary(), getProjects()]);
+  return {
+    ...pageMetadata({
+      locale,
+      path: "/projects",
+      title: dict.projects.pageTitle,
+      description: dict.projects.pageDescription,
+    }),
+    // An empty list is thin content. It becomes indexable as soon as a project is published.
+    ...(projects.length === 0 && { robots: { index: false, follow: true } }),
+  };
 }
 
 export default async function ProjectsPage() {

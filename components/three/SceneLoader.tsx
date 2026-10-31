@@ -17,19 +17,19 @@ function canRender3D(): boolean {
   }
 }
 
-/** Mounts the WebGL scene only after the page has loaded, so it never competes with LCP. */
+/** The hero is a video, so WebGL (and the three.js bundle) only loads once the visitor starts scrolling. */
 export function SceneLoader() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!canRender3D()) return;
-    const start = () => {
-      const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
-      idle(() => setReady(true));
-    };
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start, { once: true });
-    return () => window.removeEventListener("load", start);
+    const start = () => setReady(true);
+    if (window.scrollY > 0) {
+      start();
+      return;
+    }
+    window.addEventListener("scroll", start, { once: true, passive: true });
+    return () => window.removeEventListener("scroll", start);
   }, []);
 
   return ready ? <Scene /> : null;

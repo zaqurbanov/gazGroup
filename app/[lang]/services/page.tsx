@@ -37,7 +37,7 @@ export default async function ServicesPage() {
             {services.map((s, i) => (
               <li key={s._id} className="reveal">
                 <Link href={`/${locale}/services/${s.slug}`} className="card flex h-full gap-6 p-8">
-                  <span aria-hidden="true" className="font-display text-3xl font-semibold text-emerald">
+                  <span aria-hidden="true" className="w-12 shrink-0 font-display text-3xl font-semibold text-emerald-ink">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="space-y-2">

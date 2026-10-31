@@ -61,7 +61,7 @@ export default async function ProductsPage() {
                     <Link href={`/${locale}/products/${p.slug}`} className="card group flex h-full flex-col overflow-hidden">
                       {p.image && <Media id={p.image} alt={pick(p.name, locale)} className="aspect-[16/10]" />}
                       <span className="flex flex-1 flex-col gap-3 p-6">
-                        <span className="font-display text-3xl font-semibold text-emerald">{p.formula}</span>
+                        <span className="font-display text-3xl font-semibold text-emerald-ink">{p.formula}</span>
                         <span className="block font-display text-lg font-semibold">{pick(p.name, locale)}</span>
                         <span className="block text-sm leading-relaxed text-steel">{pick(p.summary, locale)}</span>
                         <span className="mt-auto flex items-center justify-between pt-3 text-xs font-bold">

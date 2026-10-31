@@ -69,12 +69,30 @@
     "eyebrow": "Why us",
     "title": "What our supply is built on",
     "items": [
-      { "title": "Purity grades", "text": "Gas in the purity grade that suits each application." },
-      { "title": "Custom mixtures", "text": "Gas mixtures with a composition matched to your process." },
-      { "title": "Safe delivery", "text": "Cylinders are transported in line with safety rules." },
-      { "title": "Wide range", "text": "Technical, specialty and liquid gases, plus equipment." },
-      { "title": "Personal approach", "text": "A supply plan fitted to each customer's volume and schedule." },
-      { "title": "Technical support", "text": "Professional advice on gas selection and use." }
+      {
+        "title": "Purity grades",
+        "text": "Gas in the purity grade that suits each application."
+      },
+      {
+        "title": "Custom mixtures",
+        "text": "Gas mixtures with a composition matched to your process."
+      },
+      {
+        "title": "Safe delivery",
+        "text": "Cylinders are transported in line with safety rules."
+      },
+      {
+        "title": "Wide range",
+        "text": "Technical, specialty and liquid gases, plus equipment."
+      },
+      {
+        "title": "Personal approach",
+        "text": "A supply plan fitted to each customer's volume and schedule."
+      },
+      {
+        "title": "Technical support",
+        "text": "Professional advice on gas selection and use."
+      }
     ]
   },
   "certs": {
@@ -140,5 +158,23 @@
     "rights": "All rights reserved.",
     "navigation": "Navigation",
     "contacts": "Contact"
+  },
+  "story": {
+    "eyebrow": "Delivery",
+    "title": "From the cylinder to your door",
+    "steps": [
+      {
+        "title": "Filling and inspection",
+        "text": "The cylinder is filled with the requested gas and checked before it leaves."
+      },
+      {
+        "title": "Loading",
+        "text": "The cylinder is placed on the vehicle and secured safely."
+      },
+      {
+        "title": "Delivery",
+        "text": "The order sets off for the agreed address."
+      }
+    ]
   }
 }

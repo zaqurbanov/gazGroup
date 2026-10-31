@@ -5,6 +5,8 @@
   --deep: #0f3d5e;
   --emerald: #10b981;
   --steel: #64748b;
+  /* Same hue as the accent, darkened to 5.5:1 on white for text on light sections. */
+  --emerald-ink: #047857;
   --white: #ffffff;
   --ink: color-mix(in oklab, #0f3d5e 55%, black);
   --mist: color-mix(in oklab, #64748b 9%, white);
@@ -15,6 +17,7 @@
   --color-deep: var(--deep);
   --color-emerald: var(--emerald);
   --color-steel: var(--steel);
+  --color-emerald-ink: var(--emerald-ink);
   --color-ink: var(--ink);
   --color-mist: var(--mist);
   --color-line: var(--line);
@@ -127,7 +130,7 @@
   }
   .btn-primary {
     background: var(--emerald);
-    color: var(--deep);
+    color: var(--ink);
     box-shadow: 0 10px 30px -10px color-mix(in oklab, var(--emerald) 70%, transparent);
   }
   .btn-primary:hover {
@@ -141,7 +144,7 @@
   }
 
   .glass {
-    background: color-mix(in oklab, var(--ink) 58%, transparent);
+    background: color-mix(in oklab, var(--ink) 80%, transparent);
     border: 1px solid color-mix(in oklab, white 18%, transparent);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -149,6 +152,7 @@
   }
   .card {
     background: var(--white);
+    color: var(--deep);
     border: 1px solid var(--line);
     border-radius: 1.25rem;
     transition:
@@ -181,6 +185,26 @@
   }
 }
 
+/* Hero video drifts slower than the page. The element is 125% tall, so 20% of travel never shows a gap. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-parallax {
+      animation: hero-parallax linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
+@keyframes hero-parallax {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20%);
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -210,6 +234,98 @@
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Pulse rings for the floating contact button */
+.fab-pulse::before,
+.fab-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--emerald);
+  z-index: -1;
+  animation: fab-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.fab-pulse::after {
+  animation-delay: 1.2s;
+}
+@keyframes fab-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  80%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fab-pulse::before,
+  .fab-pulse::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Delivery story: ordinary section by default, tall section with a sticky stage once the 3D scene runs. */
+.story {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+.story-steps {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+.story-step {
+  border-top: 2px solid color-mix(in oklab, white 25%, transparent);
+  padding-top: 0.9rem;
+  transition:
+    opacity 0.4s ease,
+    border-color 0.4s ease;
+}
+html[data-scene3d] .story {
+  height: 320vh;
+  padding-block: 0;
+}
+html[data-scene3d] .story-stage {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 7rem;
+  padding-bottom: 2.25rem;
+}
+html[data-scene3d] .story-steps {
+  margin-top: 0;
+  grid-template-columns: repeat(3, 1fr);
+}
+html[data-scene3d] .story[data-step] .story-step {
+  opacity: 0.35;
+}
+html[data-scene3d] .story[data-step="1"] [data-i="1"],
+html[data-scene3d] .story[data-step="2"] [data-i="2"],
+html[data-scene3d] .story[data-step="3"] [data-i="3"] {
+  opacity: 1;
+  border-color: var(--emerald);
+}
+@media (max-width: 767px) {
+  html[data-scene3d] .story {
+    height: 280vh;
+  }
+  /* Phones show only the active step so the road stays clear. */
+  html[data-scene3d] .story-steps {
+    grid-template-columns: 1fr;
+  }
+  html[data-scene3d] .story[data-step="1"] .story-step:not([data-i="1"]),
+  html[data-scene3d] .story[data-step="2"] .story-step:not([data-i="2"]),
+  html[data-scene3d] .story[data-step="3"] .story-step:not([data-i="3"]) {
+    display: none;
   }
 }
 

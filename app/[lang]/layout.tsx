@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Unbounded } from "next/font/google";
+import { ContactFab } from "@/components/ui/ContactFab";
 import { Footer } from "@/components/ui/Footer";
 import { Header } from "@/components/ui/Header";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -67,7 +68,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
       <body className="min-h-dvh bg-white antialiased">
         <a
           href="#main"
-          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-emerald px-5 py-3 font-bold text-deep focus:translate-y-0"
+          className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-emerald px-5 py-3 font-bold text-ink focus:translate-y-0"
         >
           {dict.common.skipToContent}
         </a>
@@ -79,19 +80,12 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         <main id="main">{children}</main>
         <Footer locale={locale} dict={dict} settings={settings} />
 
-        {whatsapp && (
-          <a
-            href={`https://wa.me/${whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={dict.contact.whatsapp}
-            className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-emerald text-deep shadow-xl shadow-black/25 transition-transform hover:scale-105"
-          >
-            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
-              <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1a11 11 0 0 1-4.9-3.5c-1-1.2-1.7-2.7-1.8-3.2 0-.5.2-1 .5-1.4.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.8.9c.3.1.5.2.5.4 0 .2 0 .8-.2 1.3Z" />
-            </svg>
-          </a>
-        )}
+        <ContactFab
+          locale={locale}
+          label={dict.common.contactUs}
+          whatsapp={whatsapp}
+          whatsappLabel={dict.contact.whatsapp}
+        />
         <JsonLd data={organization} />
       </body>
     </html>

@@ -3,7 +3,7 @@ import { abs } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: "*", allow: "/", disallow: ["/admin", "/api/"] }],
+    rules: [{ userAgent: "*", allow: ["/", "/api/media/"], disallow: ["/admin", "/api/"] }],
     sitemap: abs("/sitemap.xml"),
   };
 }

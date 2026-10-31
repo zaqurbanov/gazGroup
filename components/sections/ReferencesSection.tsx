@@ -11,15 +11,15 @@ export function LogoRow({ title, items }: { title: string; items: PartnerDTO[] }
   const loop = items.length > 3;
   return (
     <div className="space-y-6">
-      <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-steel">{title}</h3>
+      <h3 className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white/70">{title}</h3>
       <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]">
         <ul className={loop ? "marquee-track" : "flex flex-wrap gap-10"}>
           {(loop ? [...items, ...items] : items).map((p, i) => (
-            <li key={`${p._id}-${i}`} aria-hidden={loop && i >= items.length ? true : undefined} className="flex h-16 w-40 shrink-0 items-center justify-center">
+            <li key={`${p._id}-${i}`} aria-hidden={loop && i >= items.length ? true : undefined} className="flex h-16 w-40 shrink-0 items-center justify-center rounded-xl bg-white p-3">
               {p.logo ? (
                 <Media id={p.logo} alt={p.name} className="h-full w-full [&_img]:object-contain" sizes="160px" />
               ) : (
-                <span className="font-display text-sm font-semibold text-steel">{p.name}</span>
+                <span className="font-display text-sm font-semibold text-deep">{p.name}</span>
               )}
             </li>
           ))}
@@ -44,7 +44,7 @@ export function ReferencesSection({
 }) {
   if (projects.length + clients.length + partners.length === 0) return null;
   return (
-    <section data-scene="references" className="section section-light">
+    <section data-scene="references" className="section section-dark relative z-[1]">
       <div className="container-x space-y-16">
         {projects.length > 0 && (
           <div className="space-y-10">
